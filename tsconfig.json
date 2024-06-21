@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "module": "esnext",
+    "target": "es2020", // Actualizado a ES2020, o la versión más reciente que soporte tu código
+    "module": "es2020", // Actualizado a ES2020 modules
     "moduleResolution": "node",
     "lib": [
-      "es2017",
+      "es2020", // Actualizado a ES2020
       "dom",
       "dom.iterable"
     ],
@@ -16,6 +16,7 @@
     "noImplicitAny": false,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "importHelpers": true // Agregado para importar las funciones de ayuda de tslib
   }
 }
