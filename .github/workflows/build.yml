@@ -1,0 +1,44 @@
+name: 'Build'
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Main
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Build
+        run: |
+          rm -rf node_modules
+          npm install
+          npm run lint && npm run rollup -c rollup.config.js
+          ls -R dist
+      
+      # Descomenta esta sección si necesitas la validación de HACS
+      # - name: HACS validation
+      #   uses: 'hacs/action@main'
+      #   with:
+      #     category: 'plugin'
