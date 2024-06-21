@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2020", // Actualizado a ES2020, o la versión más reciente que soporte tu código
+    "target": "es2020", // Actualizado a ES2020
     "module": "es2020", // Actualizado a ES2020 modules
     "moduleResolution": "node",
     "lib": [
