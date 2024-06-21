@@ -1,0 +1,9 @@
+resources:
+  - url: http://127.0.0.1:5004/platinum-weather-card-es.js
+    type: module
+views:
+  - cards:
+      - type: custom:platinum-weather-card-es
+        name: Platinum Weather Card Development ES
+        entity: sun.sun
+        test_gui: true
