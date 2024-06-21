@@ -4,10 +4,16 @@ on:
   release:
     types: [published]
 
+env:
+  NODE_VERSION: 20  # Define la versión de Node.js a utilizar
+
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: ${{ env.NODE_VERSION }}  # Propaga la variable de entorno al trabajo
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -23,7 +29,7 @@ jobs:
       # Install dependencies and build
       - name: Install dependencies and build
         run: |
-          cd $GITHUB_WORKSPACE  # Cambia al directorio raíz del repositorio
+          cd $GITHUB_WORKSPACE
           npm install
           npm run build
           ls -R dist
