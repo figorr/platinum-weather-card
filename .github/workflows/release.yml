@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Verify environment
+      - name: Verify environment
+        run: |
+          echo "Current directory: $(pwd)"
+          ls -al
+          node -v
+          npm -v
+
+      # Install dependencies and build
+      - name: Install dependencies and build
+        run: |
+          cd $GITHUB_WORKSPACE  # Cambia al directorio raíz del repositorio
+          npm install
+          npm run build
+          ls -R dist
+
+      # Upload build file to the release as an asset
+      - name: Upload build to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: dist/*
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
