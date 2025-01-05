@@ -34,8 +34,8 @@ console.info(
 // This puts your card into the UI card picker dialog
 (window as any).customCards = (window as any).customCards || [];
 (window as any).customCards.push({
-  type: 'platinum-weather-card',
-  name: 'Platinum Weather Card',
+  type: 'platinum-weather-card-es',
+  name: 'Platinum Weather Card ES',
   description: 'An fully customisable weather card with a GUI configuration',
 });
 
@@ -2079,6 +2079,7 @@ export class PlatinumWeatherCard extends LitElement {
     switch (this.locale) {
       case "it":
       case "fr":
+      case "es":
         return windDirections_fr;
       case "de":
         return windDirections_de;
@@ -2447,7 +2448,7 @@ export class PlatinumWeatherCard extends LitElement {
   get localeTextFeelsLike(): string {
     switch (this.locale) {
       case 'it': return "Percepito";
-      case 'es': return "Percibido";
+      case 'es': return "Sensación";
       case 'fr': return "Ressenti";
       case 'de': return "Gefühlt";
       case 'nl': return "Voelt als";
@@ -2464,7 +2465,7 @@ export class PlatinumWeatherCard extends LitElement {
   get localeTextObservedMax(): string {
     switch (this.locale) {
       case 'it': return "Osservata Max";
-      case 'es': return "Max observado";
+      case 'es': return "Máx Observado";
       case 'fr': return "Observé Max";
       case 'de': return "Beobachtet Max";
       case 'nl': return "Opgemerkt Max";
@@ -2481,7 +2482,7 @@ export class PlatinumWeatherCard extends LitElement {
   get localeTextObservedMin(): string {
     switch (this.locale) {
       case 'it': return "Osservata Min";
-      case 'es': return "Mín observado";
+      case 'es': return "Mín Observado";
       case 'fr': return "Observé Min";
       case 'de': return "Beobachtet Min";
       case 'nl': return "Opgemerkt Min";
@@ -2510,7 +2511,7 @@ export class PlatinumWeatherCard extends LitElement {
   get localeTextForecastMax(): string {
     switch (this.locale) {
       case 'it': return "Max oggi";
-      case 'es': return "Max hoy";
+      case 'es': return "Máx Hoy";
       case 'fr': return "Max aujourd'hui";
       case 'de': return "Max heute";
       case 'nl': return "Max vandaag";
@@ -2527,7 +2528,7 @@ export class PlatinumWeatherCard extends LitElement {
   get localeTextForecastMin(): string {
     switch (this.locale) {
       case 'it': return "Min oggi";
-      case 'es': return "Mín hoy";
+      case 'es': return "Mín Hoy";
       case 'fr': return "Min aujourd'hui";
       case 'de': return "Min heute";
       case 'nl': return "Min vandaag";
