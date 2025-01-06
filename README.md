@@ -15,13 +15,13 @@ Hey dude! Help me maintain project with a couple of :beers: or a :coffee:!
 
 # Need Help?
 
-If you need help use [GitHub](https://github.com/figorr/platinum-weather-card-es/discussions/categories/general) discussions.
+If you need help use [GitHub](https://github.com/figorr/platinum-weather-card/discussions/categories/general) discussions.
 
 # Overview
 
 This is a fully customisable weather card with a graphical configuration. It has been patterned after the original Dark-Sky animated weather card (https://github.com/iammexx/home-assistant-config/tree/master/ui/darksky), and a forked variant, the BOM Weather Card (https://github.com/DavidFW1960/bom-weather-card). The aim is that this card is usable by people everywhere and be able to deal with your sensors no matter what integration(s) provides them. To get the most from the card you may need to look at what various weather integrations provide in addition to the standard weather entity.
 
-![Platinum Weather card](https://raw.githubusercontent.com/figorrplatinum-weather-card-es/master/images/platinum-weather-card.png)
+![Platinum Weather card](https://raw.githubusercontent.com/figorrplatinum-weather-card/master/images/platinum-weather-card.png)
 
 The design goals for the card are:
 
