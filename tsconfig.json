@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es2020", // Actualizado a ES2020
-    "module": "es2020", // Actualizado a ES2020 modules
+    "target": "es2017",
+    "module": "esnext",
     "moduleResolution": "node",
     "lib": [
-      "es2020", // Actualizado a ES2020
+      "es2017",
       "dom",
       "dom.iterable"
     ],
@@ -16,7 +16,6 @@
     "noImplicitAny": false,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "experimentalDecorators": true,
-    "importHelpers": true
+    "experimentalDecorators": true
   }
 }

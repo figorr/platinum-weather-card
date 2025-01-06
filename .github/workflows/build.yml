@@ -3,41 +3,23 @@ name: 'Build'
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
-    name: Build Main
+    name: Build Master
     runs-on: ubuntu-latest
-    env:
-      NODE_ENV: production
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Cache Node.js modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      
+      - uses: actions/checkout@v2
       - name: Build
         run: |
-          rm -rf node_modules
+          rm -rf /home/runner/work/platinum-weather-card/platinum-weather-card/node_modules
           npm install
           npm run lint && npm run rollup -c rollup.config.js
-          ls -R dist
-      
-      # Descomenta esta sección si necesitas la validación de HACS
+          ls -R /home/runner/work/platinum-weather-card/platinum-weather-card/dist
       # - name: HACS validation
       #   uses: 'hacs/action@main'
       #   with:

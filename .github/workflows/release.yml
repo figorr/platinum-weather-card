@@ -10,16 +10,16 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
 
       # Build
       - name: Build the file
         run: |
-          rm -rf /home/runner/work/platinum-weather-card-es/platinum-weather-card-es/node_modules
-          cd /home/runner/work/platinum-weather-card-es/platinum-weather-card-es
+          rm -rf /home/runner/work/platinum-weather-card/platinum-weather-card/node_modules
+          cd /home/runner/work/platinum-weather-card/platinum-weather-card
           npm install
           npm run build
-          ls -R /home/runner/work/platinum-weather-card/platinum-weather-card-es/dist
+          ls -R /home/runner/work/platinum-weather-card/platinum-weather-card/dist
 
       # Upload build file to the releas as an asset.
       - name: Upload javascript to release
@@ -27,7 +27,7 @@ jobs:
 
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/platinum-weather-card-es/platinum-weather-card-es/dist/*
+          file: /home/runner/work/platinum-weather-card/platinum-weather-card/dist/*
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
