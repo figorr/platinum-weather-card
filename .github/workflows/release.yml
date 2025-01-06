@@ -9,25 +9,35 @@ jobs:
     name: Prepare release
     permissions: write-all
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v1
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      # Build
-      - name: Build the file
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Install dependencies and build the project
+      - name: Install and build
         run: |
-          rm -rf /home/runner/work/platinum-weather-card/platinum-weather-card/node_modules
-          cd /home/runner/work/platinum-weather-card/platinum-weather-card
-          npm install
+          npm ci
           npm run build
-          ls -R /home/runner/work/platinum-weather-card/platinum-weather-card/dist
 
-      # Upload build file to the releas as an asset.
-      - name: Upload javascript to release
+      # Compress .js files to .gz
+      - name: Compress .js files
+        run: |
+          find dist -name "*.js" -exec gzip -k {} \;
+
+      # Upload files to the GitHub release
+      - name: Upload assets to release
         uses: svenstaro/upload-release-action@v2
-
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/platinum-weather-card/platinum-weather-card/dist/*
-          tag: ${{ github.ref }}
+          file: dist/**/*.{js,js.gz}
+          tag: ${{ github.event.release.tag_name }}
           overwrite: true
           file_glob: true
