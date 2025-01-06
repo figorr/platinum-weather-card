@@ -3,6 +3,7 @@ name: 'Release'
 on:
   release:
     types: [published]
+  workflow_dispatch: # Permite ejecución manual desde GitHub Actions
 
 jobs:
   release:
