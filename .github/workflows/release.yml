@@ -23,11 +23,11 @@ jobs:
           ls -R dist
 
       # Upload build files to the release as assets
-      - name: Upload JavaScript to release
+      - name: Upload all build files to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: dist/**/*.{js,js.gz}
+          file: dist/**
           tag: ${{ github.event.release.tag_name }}
           overwrite: true
           file_glob: true
