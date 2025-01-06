@@ -49,5 +49,6 @@ export default [
       format: 'es',
     },
     plugins: [...plugins],
+    context: 'global',
   },
 ];
